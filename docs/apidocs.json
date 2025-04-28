@@ -1,0 +1,2532 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "BISMA API",
+    "description": "API Documentation For Bisma",
+    "version": "1.0.0"
+  },
+  "_servers": [
+    {
+      "url": "http:localhost:8000",
+      "description": "localhost"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Intern Category",
+      "description": "tmst_kategori_magang"
+    },
+    {
+      "name": "Incentive",
+      "description": "tran_insentif"
+    },
+    {
+      "name": "Incentive Unit",
+      "description": "tmst_satuan_incentive"
+    },
+    {
+      "name": "Master User",
+      "description": "tmst_pengguna"
+    },
+    {
+      "name": "Master Project",
+      "description": "tmst_project"
+    },
+    {
+      "name": "Project",
+      "description": "tran_project"
+    },
+    {
+      "name": "Timesheet",
+      "description": "tran_timesheet"
+    },
+    {
+      "name": "Intern Activity",
+      "description": "tmst_kategori_kegiatan"
+    },
+    {
+      "name": "Payment Status",
+      "description": "tmst_status_pembayaran"
+    },
+    {
+      "name": "Timesheet Status",
+      "description": "tmst_status_timesheet"
+    },
+    {
+      "name": "Positions",
+      "description": "tmst_posisi"
+    },
+    {
+      "name": "Users Position",
+      "description": "tmst_posisi"
+    },
+    {
+      "name": "Payments",
+      "description": "tran_payment"
+    }
+  ],
+  "paths": {
+    "/api/internCategory": {
+      "get": {
+        "tags": ["Intern Category"],
+        "summary": "Show And Search Intern Category",
+        "description": "For Fiture Searching Intern Category",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "kategori",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Category Name"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Page Number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Intern Category"],
+        "summary": "Create Intern Category",
+        "consumes": "application/json",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "kategori": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/internCategory/{categoryId}": {
+      "get": {
+        "tags": ["Intern Category"],
+        "summary": "Get One Intern Category",
+        "description": "get internship category by id (to Edit)",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "categoryId",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Id Intern Category"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Intern Category"],
+        "summary": "Delete Intern Category",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "categoryId",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Id Intern Category"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Intern Category"],
+        "summary": "Update Intern Category",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "categoryId",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Id Intern Category"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "kategori": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/incentive": {
+      "get": {
+        "tags": ["Incentive"],
+        "summary": "Show And Search Intern Category",
+        "description": "For Fiture Searching Incentive",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "kategori",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Category Name"
+          },
+          {
+            "in": "query",
+            "name": "insentif",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Amount of incentive"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Number Of Page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Incentive"],
+        "summary": "Create Incentive",
+        "consumes": "application/json",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id_kategori": {
+                    "type": "integer"
+                  },
+                  "id_satuan": {
+                    "type": "integer"
+                  },
+                  "besaran_insentif": {
+                    "type": "integer"
+                  },
+                  "durasi_satuan": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/incentive/{incentiveId}": {
+      "get": {
+        "tags": ["Incentive"],
+        "summary": "Get One data Incentive (For Edit)",
+        "description": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "incentiveId",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Id Incentive"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Incentive"],
+        "summary": "Delete Selected Incentive by Id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "incentiveId",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Id Incentive"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/incentive/get": {
+      "get": {
+        "tags": ["Incentive"],
+        "summary": "Show All Incentive Detail",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/incentive/update/{incentiveId}": {
+      "put": {
+        "tags": ["Incentive"],
+        "summary": "Update Incentive",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "incentiveId",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Id Incentive"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id_kategori": {
+                    "type": "integer"
+                  },
+                  "id_satuan": {
+                    "type": "integer"
+                  },
+                  "besaran_insentif": {
+                    "type": "integer"
+                  },
+                  "durasi_satuan": {
+                    "type": "integer",
+                    "required": "false"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/incentiveUnit": {
+      "get": {
+        "tags": ["Incentive Unit"],
+        "summary": "Get All Incentive Unit",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Incentive Unit"],
+        "summary": "Create Intern Unit",
+        "consumes": "application/json",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "satuan": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/incentiveUnit/{unitId}": {
+      "put": {
+        "tags": ["Incentive Unit"],
+        "summary": "Update Incentive Unit",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "unitId",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Id Incentive Unit"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "satuan": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Incentive Unit"],
+        "summary": "Delete Selected Incentive Unit by Id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "unitId",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Id Incentive Unit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/masterUser": {
+      "get": {
+        "tags": ["Master User"],
+        "summary": "Get All Master User",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Master User"],
+        "summary": "Create Master User",
+        "consumes": "application/json",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "nama": {
+                    "type": "string"
+                  },
+                  "username": {
+                    "type": "string"
+                  },
+                  "departemen": {
+                    "type": "string"
+                  },
+                  "no_telp": {
+                    "type": "string"
+                  },
+                  "no_rekening": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": ["Mahasiswa", "Staf"]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/masterUser/{userId}": {
+      "delete": {
+        "tags": ["Master User"],
+        "summary": "Delete Selected Master User by Id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Id Master User"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Master User"],
+        "summary": "Update Master User",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Id Master User"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nama": {
+                    "type": "string"
+                  },
+                  "username": {
+                    "type": "string"
+                  },
+                  "departemen": {
+                    "type": "string"
+                  },
+                  "no_telp": {
+                    "type": "string"
+                  },
+                  "no_rekening": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": ["Mahasiswa", "Staf"]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/masterUser/showPic": {
+      "get": {
+        "tags": ["Master User"],
+        "summary": "Get All PIC",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/project": {
+      "get": {
+        "tags": ["Project"],
+        "summary": "Get All Tran Project",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Project"],
+        "summary": "Create Many Tran Project",
+        "consumes": "application/json",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": true,
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/DataProject"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/project/user/{userId}": {
+      "get": {
+        "tags": ["Project"],
+        "summary": "Displays all activities participated in by the user (Detail Available Student)",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "User Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/project/timesheet/{userId}": {
+      "get": {
+        "tags": ["Project"],
+        "summary": "To Feature Create New Timesheet",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "User Id"
+          }
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/project/{projectId}": {
+      "get": {
+        "tags": ["Project"],
+        "summary": "Displays one tran project based on id in tmst_project",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "projectId",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Project Id In Master Project"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Project"],
+        "summary": "Delete Selected Project by Id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "projectId",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Id Project"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Project"],
+        "summary": "Update Project",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "projectId",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Id Project"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "id_project": {
+                    "type": "integer"
+                  },
+                  "id_peserta": {
+                    "type": "string"
+                  },
+                  "estimasi": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/getDataPdfRecap": {
+      "get": {
+        "tags": ["Project"],
+        "summary": "Get All Pdf Reporting Filtering by project name and month",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "project",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Project Name"
+          },
+          {
+            "in": "query",
+            "name": "month",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Month"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/generatePdfRecap": {
+      "get": {
+        "tags": ["Project"],
+        "summary": "For feature generating pdf recap",
+        "description": "used for the pdf creation feature for both viewing and downloading, for query options there are 2, if you want to download use 'unduh' if you want to display use 'lihat'",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "project",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Project Name"
+          },
+          {
+            "in": "query",
+            "name": "month",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Month"
+          },
+          {
+            "in": "query",
+            "name": "option",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Option Feature"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/activity": {
+      "get": {
+        "tags": ["Intern Activity"],
+        "summary": "Get All Intern Activity",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Intern Activity"],
+        "summary": "Create Intern Activity",
+        "consumes": "application/json",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "kegiatan": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/activity/{activityId}": {
+      "put": {
+        "tags": ["Intern Activity"],
+        "summary": "Update Intern Activity",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "activityId",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Id Intern Activity"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "kegiatan": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Intern Activity"],
+        "summary": "Delete Selected Intern Activity by Id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "activityId",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Id Intern Activity"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/timesheet": {
+      "post": {
+        "tags": ["Timesheet"],
+        "summary": "Create Many Timesheet",
+        "consumes": "application/json",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": true,
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/DataTimesheet"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Timesheet"],
+        "summary": "Get All Timesheet",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/getDataPdfTimesheet": {
+      "get": {
+        "tags": ["Timesheet"],
+        "summary": "Get all data required for generate pdf timesheet",
+        "description": "",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id_pengguna",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Id User"
+          },
+          {
+            "in": "query",
+            "name": "project",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Project Name"
+          },
+          {
+            "in": "query",
+            "name": "month",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Month"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/generatePdfTimesheet": {
+      "get": {
+        "tags": ["Timesheet"],
+        "summary": "For feature generating pdf timesheet",
+        "description": "used for the pdf creation feature for both viewing and downloading, for query options there are 2, if you want to download use 'unduh' if you want to display use 'lihat'",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id_pengguna",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Id User"
+          },
+          {
+            "in": "query",
+            "name": "month",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Month"
+          },
+          {
+            "in": "query",
+            "name": "project",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Project Name"
+          },
+          {
+            "in": "query",
+            "name": "option",
+            "schema": {
+              "type": "string"
+            },
+            "description": "option feature"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/generateAllPdf": {
+      "get": {
+        "tags": ["Timesheet"],
+        "summary": "For feature generating all pdf",
+        "description": "used for the pdf creation feature for both viewing and downloading, for query options there are 2, if you want to download use 'unduh' if you want to display use 'lihat'",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "month",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Month"
+          },
+          {
+            "in": "query",
+            "name": "project",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Project Name"
+          },
+          {
+            "in": "query",
+            "name": "option",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Option Feature"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/timesheet/{timesheetId}": {
+      "delete": {
+        "tags": ["Timesheet"],
+        "summary": "Delete Selected Timesheet by Id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "timesheetId",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Id Timesheet"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Timesheet"],
+        "summary": "Update Timesheet",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "timesheetId",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Id Timesheet"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "jam_mulai": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "jam_selesai": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "deskripsi": {
+                    "type": "string"
+                  },
+                  "total_sesi": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/timesheet/show": {
+      "get": {
+        "tags": ["Timesheet"],
+        "summary": "Get All Timesheet And Show The Pic, Name Project, And Name Categori",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/timesheet/edit/{timesheetId}": {
+      "get": {
+        "tags": ["Timesheet"],
+        "summary": "Get One Data Specific From Timesheet(For Edit) And Selected By Timesheet Id",
+        "description": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "timesheetId",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Id Timesheet"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/availableStudent": {
+      "get": {
+        "tags": ["Timesheet"],
+        "summary": "Show And Search Available Student",
+        "description": "For Fiture Searching And Show Available Student",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "month",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "available period"
+          },
+          {
+            "in": "query",
+            "name": "nama",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Available Name"
+          },
+          {
+            "in": "query",
+            "name": "prodi",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Available Department"
+          },
+          {
+            "in": "query",
+            "name": "nim",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Available NIM"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Available Page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/checkAvailable": {
+      "get": {
+        "tags": ["Timesheet"],
+        "summary": "Check Available Student By All Month",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/availableStudent/{userId}": {
+      "get": {
+        "tags": ["Timesheet"],
+        "summary": "Select one available student by userId",
+        "description": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "user Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/masterProject": {
+      "get": {
+        "tags": ["Master Project"],
+        "summary": "Get All Master Project (For Feature Show My Project)",
+        "description": "",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "namaProjek",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Project Name"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Page Number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Master Project"],
+        "summary": "Create Master Project",
+        "consumes": "application/json",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id_kategori": {
+                    "type": "integer"
+                  },
+                  "nama": {
+                    "type": "string"
+                  },
+                  "pic": {
+                    "type": "string"
+                  },
+                  "tanggal_mulai": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "tanggal_selesai": {
+                    "type": "string",
+                    "format": "date"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/masterProject/show/{userId}": {
+      "get": {
+        "tags": ["Master Project"],
+        "summary": "Show available project in available student",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "User Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/masterProject/{projectId}": {
+      "put": {
+        "tags": ["Master Project"],
+        "summary": "Update Master Project",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "projectId",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Id Master Project"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "id_kategori": {
+                    "type": "integer"
+                  },
+                  "nama": {
+                    "type": "string"
+                  },
+                  "pic": {
+                    "type": "string"
+                  },
+                  "tanggal_mulai": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "tanggal_selesai": {
+                    "type": "string",
+                    "format": "date"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Master Project"],
+        "summary": "Get One Master Project(For Feature Edit My Project)",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "projectId",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Id Master Project"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Master Project"],
+        "summary": "Delete Selected Master Project Unit by Id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "projectId",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Id Master Project"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/paymentStatus": {
+      "get": {
+        "tags": ["Payment Status"],
+        "summary": "Get All Payment Status",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Payment Status"],
+        "summary": "Create Payment Status",
+        "consumes": "application/json",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/paymentStatus/{statusId}": {
+      "put": {
+        "tags": ["Payment Status"],
+        "summary": "Update Payment Status",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "statusId",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Id Payment Status"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Payment Status"],
+        "summary": "Delete Selected Payment Status by Id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "statusId",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Id Payment Status"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/timesheetStatus": {
+      "get": {
+        "tags": ["Timesheet Status"],
+        "summary": "Get All Timesheet Status",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Timesheet Status"],
+        "summary": "Create Timesheet Status",
+        "consumes": "application/json",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/timesheetStatus/{statusId}": {
+      "put": {
+        "tags": ["Timesheet Status"],
+        "summary": "Update Timesheet Status",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "statusId",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Id Timesheet Status"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Timesheet Status"],
+        "summary": "Delete Selected Timesheet Status by Id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "statusId",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Id Timesheet Status"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/positions": {
+      "get": {
+        "tags": ["Positions"],
+        "summary": "Get All Positions",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Positions"],
+        "summary": "Create Positions",
+        "consumes": "application/json",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "posisi": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/positions/{positionId}": {
+      "put": {
+        "tags": ["Positions"],
+        "summary": "Update Positions",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "positionId",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Id Positions"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "posisi": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Positions"],
+        "summary": "Delete Selected Positions by Id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "positionId",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Id Positions"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/usersPosition": {
+      "get": {
+        "tags": ["Users Position"],
+        "summary": "Get All Users Position",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Users Position"],
+        "summary": "Create Users Position",
+        "consumes": "application/json",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "id_pengguna": {
+                    "type": "string"
+                  },
+                  "id_posisi": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/usersPosition/{userId}": {
+      "put": {
+        "tags": ["Users Position"],
+        "summary": "Update Users Position",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Id Users Position"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id_pengguna": {
+                    "type": "string"
+                  },
+                  "id_posisi": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Users Position"],
+        "summary": "Delete Selected User Position by Id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Id Users Position"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/payments": {
+      "get": {
+        "tags": ["Payments"],
+        "summary": "Get All Payments",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Payments"],
+        "summary": "Create Payment",
+        "consumes": "application/json",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id_tran_project": {
+                    "type": "integer"
+                  },
+                  "periode": {
+                    "type": "integer"
+                  },
+                  "url_file_sp3": {
+                    "type": "string"
+                  },
+                  "id_status": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/payments/{paymentId}": {
+      "put": {
+        "tags": ["Payments"],
+        "summary": "Update Payments",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "paymentId",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Id Payment"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id_tran_project": {
+                    "type": "integer"
+                  },
+                  "periode": {
+                    "type": "integer"
+                  },
+                  "total_tagihan": {
+                    "type": "integer"
+                  },
+                  "url_file_sp3": {
+                    "type": "string"
+                  },
+                  "id_status": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Payments"],
+        "summary": "Delete Selected Payment by Id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "paymentId",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Id Payment"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/payments/listAdmin/{status}": {
+      "get": {
+        "tags": ["Payments"],
+        "summary": "List Payment in Admin",
+        "description": "There are 3 statuses, namely 'submitted' to display payments with submitted status, 'waiting' to display payments with waiting status, and 'paid' to display payments with paid status.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "status",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Type Status Payment"
+          },
+          {
+            "in": "query",
+            "name": "namaProjek",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Project Name"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Page Number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/payments/listAdmin/detail/{projectId}": {
+      "get": {
+        "tags": ["Payments"],
+        "summary": "Details list Payment in Admin",
+        "description": "List detail waitting payment",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "projectId",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Project Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/payments/showSp3": {
+      "get": {
+        "tags": ["Payments"],
+        "summary": "To Download/See SP3",
+        "description": "Download Or See SP3 in feature admin, there are two options, 'lihat' and 'download'",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "idProject",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Id Project"
+          },
+          {
+            "in": "query",
+            "name": "option",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Opsi(lihat/unduh)"
+          },
+          {
+            "in": "query",
+            "name": "month",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bulan"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "DataProject": {
+      "type": "object",
+      "properties": {
+        "id_project": {
+          "type": "integer"
+        },
+        "id_peserta": {
+          "type": "string"
+        },
+        "estimasi": {
+          "type": "integer"
+        },
+        "durasi": {
+          "type": "integer"
+        }
+      }
+    },
+    "DataTimesheet": {
+      "type": "object",
+      "properties": {
+        "id_kategori_kegiatan": {
+          "type": "integer"
+        },
+        "id_tran_project": {
+          "type": "integer"
+        },
+        "tanggal": {
+          "type": "string",
+          "format": "date"
+        },
+        "jam_mulai": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "jam_selesai": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "deskripsi": {
+          "type": "string"
+        },
+        "total_sesi": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

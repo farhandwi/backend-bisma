@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>submit-payment</title>
+  </head>
+  <body>
+    <% if (result.data.error) { %>
+      <h3 style="text-align: center"><i><%= result.data.error %></i></h3>
+    <%} else{%>
+      <% if (result.data.length != 0) { %>
+      <div id='pageHeader' style="text-align: center;margin-top: 20px;">
+        <h3><i>REKAPITULASI INSENTIF</i></h3><br>
+      </div>
+      <div style="text-align: center">
+        <h3><i><%= result.data[0].nama_project.toUpperCase() %></i></h3>
+        <h3><i><%= result.month.startMonth.toUpperCase() %> - <%= result.month.finishMonth.toUpperCase() %></i></h3>
+      </div>
+      <table border="1" cellspacing="0" cellpadding="8" style="display: flex; justify-content: space-between; width: 100%; position: relative; text-align: center">
+        <thead>
+          <tr>
+            <% for (let index = 0; index < result.headers.length; index++) { %>
+            <th><%= result.headers[index] %></th>
+            <%} %>
+          </tr>
+          <% for (let index = 0; index < result.data.length; index++) {%>
+          <tr>
+            <td><%= result.data[index].biodata %></td>
+            <% let check = 0 %>
+            <% for (let l = 0; l < result.headers.length-4; l++) { %>
+              <% if (result.data[index].tanggal[check] == result.headers[l+1]) { %>
+                <td><%= result.data[index].jam[check] %></td>
+              <% check++ %>
+              <%}else{ %>
+                <td>0</td>
+              <% } %>
+            <%} %>
+            <td><%= result.data[index].total_jam %></td>
+            <td><%= result.data[index].total_sesi %></td>
+            <td><%= result.data[index].total_insentif %></td>
+          </tr>
+          <%} %>
+          <tr>
+            <td colspan="<%= result.headers.length - 3 %>">Total</td>
+            <td><%= result.total.total_jam %></td>
+            <td><%= result.total.total_sesi %></td>
+            <td><%= result.total.total_insentif %></td>
+          </tr>
+        </thead>
+      </table>
+      <%}else{ %>
+      <h2 style="text-align: center"><i>TIMESHEET NOT FOUND!</i></h2>
+      <% }%>
+    <%}%>
+  </body>
+</html>

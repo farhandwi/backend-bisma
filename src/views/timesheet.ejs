@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <div id="pageHeader" style="text-align: center; line-height: 0.3">
+        <div style="text-align: center; line-height: 0.5">
+          <img src="https://i.imgur.com/nI4Ws89.png" alt="" height="110px" width="210px" style="margin-bottom: -25px; margin-top: -21px" />
+          <h3>Timesheet Magang</h3>
+        </div>
+        <h3><%= result.data[0].nama_project %></h3>
+      </div>
+    </header>
+
+    <main>
+      <% if (result.data.length == 0) {%>
+      <div style="text-align: center"><h2>Data Not Found!</h2></div>
+      <%}else{ %>
+      <div style="padding-left: 60px; font-family: 'Times New Roman'; line-height: 0.6">
+        <p>Nama&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;: <%= result.data[0].nama %></p>
+        <p>NIM &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;: <%= result.data[0].NIM %></p>
+        <p>Prodi&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;: <%= result.data[0].departemen %></p>
+      </div>
+      <br />
+      <table border="1" cellspacing="0" cellpadding="8" style="display: flex; justify-content: space-between; width: auto; position: relative; text-align: center; margin-left: 30px; margin-right: 30px">
+        <thead>
+          <tr>
+            <% for (let index = 0; index < result.headers.length; index++) { %>
+            <th style="background-color: #b5c5e7"><%= result.headers[index] %></th>
+            <%}%>
+          </tr>
+        </thead>
+        <tbody>
+          <% let cekMinggu = 0; %> <% let cekMingguLama = 0; %> <% let cekSubMinggu = null; %> <% let cekSubMingguBool = false; %> <% let jumlahJamPerMinggu = 0;%> <% let cekTanggal = null %> <% let awal = null %> <% let akhir = null %> <%
+          let isWithinRange = null %> <% const parts = result.masterMonth.startMonth.split(" "); %> <% if (result.data.length == 1) {%> <% cekTanggal = new Date(result.data[0].tanggal) %> <% for (let cekMg = 0; cekMg < result.weeks.length;
+          cekMg++) {%> <% awal = new Date(result.weeks[cekMg].awal) %> <% akhir = new Date(result.weeks[cekMg].akhir) %> <% if (cekMg == 0 && cekTanggal >= awal && cekTanggal <= akhir) {%> <% isWithinRange = ( (cekTanggal.getMonth() ===
+          awal.getMonth() && cekTanggal.getDate() >= awal.getDate()) || (cekTanggal.getMonth() === akhir.getMonth() && cekTanggal.getDate() <= akhir.getDate()) ); %> <%}else{%> <% isWithinRange = ( (cekTanggal.getMonth() === awal.getMonth()
+          && cekTanggal.getDate() >= awal.getDate()) && (cekTanggal.getMonth() === akhir.getMonth() && cekTanggal.getDate() <= akhir.getDate()) ); %> <%} %> <% if (isWithinRange == true) {%> <% cekMinggu = cekMg %> <% break; %> <%} %> <%}
+          %> <% jumlahJamPerMinggu += result.data[0].total_sesi %>
+          <tr>
+            <td>1</td>
+            <td><%= result.data[0].tanggal %></td>
+            <td><%= result.data[0].kegiatan %></td>
+            <td><%= result.data[0].deskripsi %></td>
+            <td><%= result.data[0].jam_mulai %></td>
+            <td><%= result.data[0].jam_selesai %></td>
+            <td><%= result.data[0].total_sesi %></td>
+            <td><%= result.data[0].url_file_sp3[0] %></td>
+          </tr>
+          <tr>
+            <td colspan="6">Subtotal Jam Kerja Minggu ke-<%= cekMinggu+1 %> bulan <%= parts[0] %></td>
+            <td><%= jumlahJamPerMinggu %></td>
+            <td></td>
+          </tr>
+          <%}else{ %> <% result.data.forEach((data, index) => { %> <% cekTanggal = new Date(data.tanggal) %> <% for (let cekMg = 0; cekMg < result.weeks.length; cekMg++) {%> <% awal = new Date(result.weeks[cekMg].awal) %> <% akhir = new
+          Date(result.weeks[cekMg].akhir) %> <% if (cekMg == 0 && cekTanggal >= awal && cekTanggal <= akhir) {%> <% isWithinRange = ( (cekTanggal.getMonth() === awal.getMonth() && cekTanggal.getDate() >= awal.getDate()) ||
+          (cekTanggal.getMonth() === akhir.getMonth() && cekTanggal.getDate() <= akhir.getDate()) ); %> <%}else{%> <% isWithinRange = ( (cekTanggal.getMonth() === awal.getMonth() && cekTanggal.getDate() >= awal.getDate()) &&
+          (cekTanggal.getMonth() === akhir.getMonth() && cekTanggal.getDate() <= akhir.getDate()) ); %> <%} %> <% if (isWithinRange == true) {%> <% if (cekSubMinggu == null && cekSubMingguBool == false) {%> <% cekSubMinggu = cekMg %> <%
+          cekSubMingguBool = true %> <% cekMinggu = cekMg %> <% break; %> <%}else if (cekMg == cekSubMinggu) {%> <% break; %> <%}else if (cekMg != cekSubMinggu) {%> <% cekMingguLama = cekSubMinggu %> <% cekSubMinggu = cekMg %> <%
+          cekSubMingguBool = false %> <% cekMinggu = cekMg %> <% break; %> <%} %> <%} %> <%} %> <% if (cekSubMingguBool){%> <% jumlahJamPerMinggu += data.total_sesi %>
+          <tr>
+            <td><%= index+1 %></td>
+            <td><%= data.tanggal %></td>
+            <td><%= data.kegiatan %></td>
+            <td><%= data.deskripsi %></td>
+            <td><%= data.jam_mulai %></td>
+            <td><%= data.jam_selesai %></td>
+            <td><%= data.total_sesi %></td>
+            <td><%= data.url_file_sp3[0] %></td>
+          </tr>
+          <%}else{%>
+          <tr>
+            <td colspan="6">Subtotal Jam Kerja Minggu ke-<%= cekMingguLama+1 %> bulan <%= parts[0] %></td>
+            <td><%= jumlahJamPerMinggu %></td>
+            <td></td>
+          </tr>
+          <% jumlahJamPerMinggu = 0; %> <% jumlahJamPerMinggu += data.total_sesi %>
+          <tr>
+            <td><%= index+1 %></td>
+            <td><%= data.tanggal %></td>
+            <td><%= data.kegiatan %></td>
+            <td><%= data.deskripsi %></td>
+            <td><%= data.jam_mulai %></td>
+            <td><%= data.jam_selesai %></td>
+            <td><%= data.total_sesi %></td>
+            <td><%= data.url_file_sp3[0] %></td>
+          </tr>
+          <% if (index === result.data.length - 1){%>
+          <tr>
+            <td colspan="6">Subtotal Jam Kerja Minggu ke-<%= cekMinggu+1 %> bulan <%= parts[0] %></td>
+            <td><%= jumlahJamPerMinggu %></td>
+            <td></td>
+          </tr>
+          <%} %> <%}%> <%}); %> <%}%>
+          <tr>
+            <th colspan="6">Grand Total Jam Kerja bulan <%= parts[0] %></th>
+            <th><%= result.total.jam %> Jam</th>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
+      <%}%>
+    </main>
+
+    <footer>
+      <div id="pageFooter" style="text-align: center; line-height: 0.5">
+        <img src="https://i.imgur.com/GKdVaTS.png" alt="footer" height="80px" width="100%" />
+      </div>
+    </footer>
+  </body>
+</html>
